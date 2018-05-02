@@ -19,7 +19,7 @@
             <span v-if="amount > 0">+</span>
             <span v-else-if="amount < 0">-</span>
             <span v-else>&nbsp;</span>
-            {{ Math.abs(amount) | qtum(8) }} QTUM
+            {{ Math.abs(amount) | recrypt(8) }} RECRYPT
           </td>
         </tr>
       </tbody>
@@ -31,7 +31,7 @@
 <script>
   import Vue from 'vue'
   import Address from '@/models/address'
-  import {RequestError} from '@/services/qtuminfo-api'
+  import {RequestError} from '@/services/recryptinfo-api'
   import {scrollIntoView} from '@/utils/dom'
 
   export default {

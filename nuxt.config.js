@@ -2,7 +2,7 @@ const webpack = require('webpack')
 
 module.exports = {
   head: {
-    titleTemplate: '%s - qtum.info',
+    titleTemplate: '%s - recrypt.info',
     meta: [
       {charset: 'utf-8'},
       {name: 'viewport', content: 'width=device-width, initial-scale=1, user-scalable=no'}
@@ -28,13 +28,13 @@ module.exports = {
         use: ['json-loader', 'yaml-loader']
       })
       config.plugins.push(new webpack.DefinePlugin({
-        'process.env.qtuminfoAPIBase': JSON.stringify(process.env.QTUMINFO_API_BASE
-          || process.env[isServer ? 'QTUMINFO_API_BASE_SERVER' : 'QTUMINFO_API_BASE_CLIENT']
-          || 'http://localhost:3001/qtuminfo-api/'),
-        'process.env.qtuminfoWSBase': JSON.stringify(process.env.QTUMINFO_WS_BASE
-          || process.env.QTUMINFO_API_BASE_WS
-          || '//localhost:3002/qtuminfo-ws/'),
-        'process.env.network': JSON.stringify(process.env.QTUM_NETWORK || 'mainnet')
+        'process.env.recryptinfoAPIBase': JSON.stringify(process.env.RECRYPTINFO_API_BASE
+          || process.env[isServer ? 'RECRYPTINFO_API_BASE_SERVER' : 'RECRYPTINFO_API_BASE_CLIENT']
+          || 'http://localhost:3001/recryptinfo-api/'),
+        'process.env.recryptinfoWSBase': JSON.stringify(process.env.RECRYPTINFO_WS_BASE
+          || process.env.RECRYPTINFO_API_BASE_WS
+          || '//localhost:3002/recryptinfo-ws/'),
+        'process.env.network': JSON.stringify(process.env.RECRYPT_NETWORK || 'mainnet')
       }))
     },
     extractCSS: true,
@@ -52,7 +52,7 @@ module.exports = {
   plugins: [
     '~/plugins/components.js',
     '~/plugins/i18n.js',
-    '~/plugins/qtum-utils.js',
+    '~/plugins/recrypt-utils.js',
     {src: '~/plugins/websocket.js', ssr: false}
   ]
 }

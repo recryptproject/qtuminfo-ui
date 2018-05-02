@@ -1,16 +1,16 @@
-import * as QtuminfoAPI from '@/services/qtuminfo-api'
+import * as RecryptinfoAPI from '@/services/recryptinfo-api'
 
 class Misc {
   static info(options = {}) {
-    return QtuminfoAPI.get('/info', options)
+    return RecryptinfoAPI.get('/info', options)
   }
 
   static richList({from, to}, options = {}) {
-    return QtuminfoAPI.get(`/misc/rich-list`, {params: {from, to}, ...options})
+    return RecryptinfoAPI.get(`/misc/rich-list`, {params: {from, to}, ...options})
   }
 
   static biggestMiners({from, to}, options = {}) {
-    return QtuminfoAPI.get(`/misc/biggest-miners`, {params: {from, to}, ...options})
+    return RecryptinfoAPI.get(`/misc/biggest-miners`, {params: {from, to}, ...options})
   }
 }
 

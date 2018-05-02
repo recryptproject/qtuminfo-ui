@@ -27,7 +27,7 @@
                 <span v-if="amount > 0">+</span>
                 <span v-else-if="amount < 0">-</span>
                 <span v-else>&nbsp;</span>
-                {{ amount.replace('-', '') | qrc20(token.decimals) }}
+                {{ amount.replace('-', '') | rrc20(token.decimals) }}
                 <AddressLink :address="token.address">
                   {{ token.symbol || $t('contract.token.tokens') }}
                 </AddressLink>
@@ -44,7 +44,7 @@
 <script>
   import Vue from 'vue'
   import Address from '@/models/address'
-  import {RequestError} from '@/services/qtuminfo-api'
+  import {RequestError} from '@/services/recryptinfo-api'
   import {scrollIntoView} from '@/utils/dom'
 
   export default {

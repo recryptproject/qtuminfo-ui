@@ -7,7 +7,7 @@ function addAmountDelimiters(string) {
   })
 }
 
-Vue.filter('qtum', (satoshis, precision = null) => {
+Vue.filter('recrypt', (satoshis, precision = null) => {
   if (precision == null) {
     let s = satoshis.toString().padStart(9, '0')
     return addAmountDelimiters((s.slice(0, -8) + '.' + s.slice(-8)).replace(/\.?0*$/g, ''))
@@ -16,7 +16,7 @@ Vue.filter('qtum', (satoshis, precision = null) => {
   }
 })
 
-Vue.filter('qrc20', (amount, decimals = 0, showDecimals = false) => {
+Vue.filter('rrc20', (amount, decimals = 0, showDecimals = false) => {
   if (decimals === 0) {
     return amount
   }

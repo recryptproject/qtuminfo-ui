@@ -17,9 +17,9 @@
               <AddressLink :address="address" />
             </td>
             <td class="monospace break-word">
-              {{ balance | qrc20(qrc20.decimals) }} {{ qrc20.symbol }}
+              {{ balance | rrc20(rrc20.decimals) }} {{ rrc20.symbol }}
             </td>
-            <td class="monospace">{{ (Number(balance) / Number(qrc20.totalSupply) * 100).toFixed(4) + '%' }}</td>
+            <td class="monospace">{{ (Number(balance) / Number(rrc20.totalSupply) * 100).toFixed(4) + '%' }}</td>
           </tr>
         </tbody>
       </table>
@@ -30,7 +30,7 @@
 <script>
   import Vue from 'vue'
   import Contract from '@/models/contract'
-  import {RequestError} from '@/services/qtuminfo-api'
+  import {RequestError} from '@/services/recryptinfo-api'
   import {scrollIntoView} from '@/utils/dom'
 
   export default {
@@ -42,7 +42,7 @@
       }
     },
     props: {
-      qrc20: {required: true}
+      rrc20: {required: true}
     },
     async asyncData({req, params, query, redirect, error}) {
       try {

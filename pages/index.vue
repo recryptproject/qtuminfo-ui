@@ -10,16 +10,16 @@
             <h3 class="card-header-title">
               {{ $tc('blockchain.block', 2) }}
             </h3>
-            <nuxt-link to="/block" class="card-header-button button is-qtum is-outlined">
+            <nuxt-link to="/block" class="card-header-button button is-recrypt is-outlined">
               {{ $t('action.view_all') }}
             </nuxt-link>
           </div>
           <div class="card-body">
-            <div v-for="block in recentBlocks" class="qtum-block is-size-7" :key="block.hash">
+            <div v-for="block in recentBlocks" class="recrypt-block is-size-7" :key="block.hash">
               <div class="level">
                 <div class="level-left">
                   <nuxt-link :to="{name: 'block-id', params: {id: block.height}}"
-                    class="level-item qtum-block-box has-text-centered">
+                    class="level-item recrypt-block-box has-text-centered">
                     {{ $tc('blockchain.block', 1) }} #{{ block.height }}
                     <FromNow :timestamp="block.timestamp" />
                   </nuxt-link>
@@ -32,7 +32,7 @@
                       {{ $t('block.brief.transaction', [block.txLength, block.duration]) }}
                       <br>
                       <span class="monospace">
-                        {{ $t('block.brief.reward') }} {{ block.reward | qtum }} QTUM
+                        {{ $t('block.brief.reward') }} {{ block.reward | recrypt }} RECRYPT
                       </span>
                     </div>
                   </div>
@@ -57,7 +57,7 @@
             <div v-for="transaction in recentTransactions" :key="transaction.id" class="is-size-7 transaction">
               <div class="level">
                 <TransactionLink :transaction="transaction.id" class="level-left" />
-                <span class="level-right">{{ transaction.valueOut | qtum }} QTUM</span>
+                <span class="level-right">{{ transaction.valueOut | recrypt }} RECRYPT</span>
               </div>
             </div>
           </div>
@@ -73,7 +73,7 @@
   export default {
     head() {
       return {
-        title: 'qtum.info',
+        title: 'recrypt.info',
         titleTemplate: null
       }
     },
@@ -116,7 +116,7 @@
     margin: 0;
   }
 
-  .qtum-block {
+  .recrypt-block {
     padding: 1em;
     border-top: 1px solid #eee;
     &:first-child {
@@ -124,14 +124,14 @@
     }
   }
 
-  .qtum-block-box {
+  .recrypt-block-box {
     flex-direction: column;
     min-width: 11em;
     padding: 1em;
     background-color: #eee;
     color: inherit;
     &:hover {
-      outline: 1px solid @qtum;
+      outline: 1px solid @recrypt;
     }
   }
 

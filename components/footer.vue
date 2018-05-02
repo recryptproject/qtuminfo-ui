@@ -3,31 +3,31 @@
     <div class="container">
       <h3 class="is-size-4 is-uppercase">{{ $t('footer.contact_us') }}</h3>
       <div class="line"></div>
-      <a href="mailto:foundation@qtum.org">foundation@qtum.org</a>
+      <a href="mailto:foundation@recrypt.org">foundation@recrypt.org</a>
       <ul class="links">
         <li>
-          <a target="_blank" href="https://www.facebook.com/QtumOfficial/">
+          <a target="_blank" href="https://www.facebook.com/RecryptOfficial/">
             <Icon icon="facebook" brands /> {{ $t('footer.facebook') }}
           </a>
         </li>
         <li>
-          <a target="_blank" href="https://twitter.com/qtumofficial">
+          <a target="_blank" href="https://twitter.com/recryptofficial">
             <Icon icon="twitter" brands /> {{ $t('footer.twitter') }}
           </a>
         </li>
         <li>
-          <a target="_blank" href="https://forum.qtum.org">
-            <span class="qtum-icon qtum-icon--qtum"></span> {{ $t('footer.forum') }}
+          <a target="_blank" href="https://forum.recrypt.org">
+            <span class="recrypt-icon recrypt-icon--recrypt"></span> {{ $t('footer.forum') }}
           </a>
         </li>
         <li>
-          <a target="_blank" href="https://github.com/qtumproject/qtum">
+          <a target="_blank" href="https://github.com/recryptproject/recrypt">
             <Icon icon="github" brands /> Github
           </a>
         </li>
       </ul>
       <div class="copyright">
-        2018 QTUM Project &copy; All rights Reserved
+        2018 RECRYPT Project &copy; All rights Reserved
       </div>
     </div>
   </footer>
@@ -74,7 +74,7 @@
       margin-bottom: 2.5rem;
     }
   }
-  span.fab, span.fas, span.qtum-icon {
+  span.fab, span.fas, span.recrypt-icon {
     font-size: 2em;
     vertical-align: middle;
   }

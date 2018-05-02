@@ -1,4 +1,4 @@
-import * as QtuminfoAPI from '@/services/qtuminfo-api'
+import * as RecryptinfoAPI from '@/services/recryptinfo-api'
 
 class Transaction {
   static get(id, options = {}) {
@@ -6,10 +6,10 @@ class Transaction {
       if (id.length === 0) {
         return []
       } else {
-        return QtuminfoAPI.get('/txs/' + id.join(','), options)
+        return RecryptinfoAPI.get('/txs/' + id.join(','), options)
       }
     } else {
-      return QtuminfoAPI.get(`/tx/${id}`, options)
+      return RecryptinfoAPI.get(`/tx/${id}`, options)
     }
   }
 }

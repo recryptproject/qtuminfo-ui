@@ -17,7 +17,7 @@
             <AddressLink :address="address">{{ name }}</AddressLink>
           </td>
           <td class="monospace break-word">
-            {{ totalSupply | qrc20(decimals, true) }}
+            {{ totalSupply | rrc20(decimals, true) }}
             {{ symbol || $t('contract.token.tokens') }}
           </td>
           <td>{{ holders }}</td>
@@ -30,7 +30,7 @@
 
 <script>
   import Contract from '@/models/contract'
-  import {RequestError} from '@/services/qtuminfo-api'
+  import {RequestError} from '@/services/recryptinfo-api'
   import {scrollIntoView} from '@/utils/dom'
 
   export default {

@@ -27,7 +27,7 @@
             :highlight="highlightAddress" />
           <span v-else class="is-pulled-left">{{ $t('transaction.unparsed_address' )}}</span>
           <span class="is-pulled-right amount">
-            {{ input.value | qtum(8) }} QTUM
+            {{ input.value | recrypt(8) }} RECRYPT
           </span>
         </div>
       </template>
@@ -46,7 +46,7 @@
           </span>
           <span v-else class="is-pulled-left">{{ $t('transaction.unparsed_address' )}}</span>
           <span class="is-pulled-right amount" v-if="output.value !== '0'">
-            {{ output.value | qtum(8) }} QTUM
+            {{ output.value | recrypt(8) }} RECRYPT
           </span>
           <span class="is-pulled-right" v-else-if="contractInfo">
             {{ $t('transaction.utxo.contract_' + contractInfo.type) }}
@@ -65,7 +65,7 @@
           </span>
           <span v-else class="is-pulled-left">{{ $t('transaction.unparsed_address' )}}</span>
           <span class="is-pulled-right amount" v-if="output.value !== '0'">
-            {{ output.value | qtum(8) }} QTUM
+            {{ output.value | recrypt(8) }} RECRYPT
           </span>
           <span class="is-pulled-right" v-else-if="contractInfo">
             {{ $t('transaction.utxo.contract_' + contractInfo.type) }}
@@ -78,7 +78,7 @@
             </div>
             <div v-if="output.scriptPubKey.asm">
               <span class="key">{{ $t('transaction.utxo.script') }}</span>
-              <code class="value">{{ output.scriptPubKey.asm | qtum-script }}</code>
+              <code class="value">{{ output.scriptPubKey.asm | recrypt-script }}</code>
             </div>
           </div>
         </div>
@@ -101,7 +101,7 @@
           <div v-if="to" class="is-clearfix">
             <AddressLink :address="to" class="is-pulled-left" :highlight="highlightAddress" />
             <span class="is-pulled-right amount break-word">
-              {{ amount | qrc20(token.decimals) }}
+              {{ amount | rrc20(token.decimals) }}
               <AddressLink :address="token.address" :highlight="highlightAddress">
                 {{ token.symbol || $t('contract.token.tokens') }}
               </AddressLink>
@@ -114,10 +114,10 @@
     <code class="column is-full break-word" v-if="contractInfo && !collapsed">{{ contractInfo.code }}</code>
     <div class="column is-full has-text-right collapse-bottom" v-if="fees">
       <template v-if="fees > 0">
-        {{ $t('transaction.fee') }} <span class="amount fee">{{ fees | qtum }} QTUM</span>
+        {{ $t('transaction.fee') }} <span class="amount fee">{{ fees | recrypt }} RECRYPT</span>
       </template>
       <template v-else-if="fees < 0">
-        {{ $t('transaction.reward') }} <span class="amount fee">{{ -fees | qtum }} QTUM</span>
+        {{ $t('transaction.reward') }} <span class="amount fee">{{ -fees | recrypt }} RECRYPT</span>
       </template>
     </div>
   </div>
@@ -187,7 +187,7 @@
       }
     },
     filters: {
-      'qtum-script'(asm) {
+      'recrypt-script'(asm) {
         let chunks = asm.split(' ')
         if (['OP_CREATE', 'OP_CALL'].includes(chunks[chunks.length - 1])) {
           chunks[3] = '[byte code]'

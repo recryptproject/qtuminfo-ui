@@ -28,36 +28,36 @@
             </div>
           </div>
         </template>
-        <template v-if="qrc20">
-          <div class="columns" v-if="qrc20.name">
+        <template v-if="rrc20">
+          <div class="columns" v-if="rrc20.name">
             <div class="column info-title">{{ $t('contract.token.name') }}</div>
-            <div class="column info-value">{{ qrc20.name }}</div>
+            <div class="column info-value">{{ rrc20.name }}</div>
           </div>
           <div class="columns">
             <div class="column info-title">{{ $t('contract.token.total_supply') }}</div>
             <div class="column info-value monospace">
-              {{ qrc20.totalSupply | qrc20(qrc20.decimals, true) }}
-              {{ qrc20.symbol || $t('contract.token.tokens') }}
+              {{ rrc20.totalSupply | rrc20(rrc20.decimals, true) }}
+              {{ rrc20.symbol || $t('contract.token.tokens') }}
             </div>
           </div>
         </template>
         <div class="columns">
           <div class="column info-title">{{ $t('contract.balance') }}</div>
-          <div class="column info-value monospace">{{ balance | qtum }} QTUM</div>
+          <div class="column info-value monospace">{{ balance | recrypt }} RECRYPT</div>
         </div>
         <div class="columns">
           <div class="column info-title">{{ $t('contract.total_received') }}</div>
-          <div class="column info-value monospace">{{ totalReceived | qtum }} QTUM</div>
+          <div class="column info-value monospace">{{ totalReceived | recrypt }} RECRYPT</div>
         </div>
         <div class="columns">
           <div class="column info-title">{{ $t('contract.total_sent') }}</div>
-          <div class="column info-value monospace">{{ totalSent | qtum }} QTUM</div>
+          <div class="column info-value monospace">{{ totalSent | recrypt }} RECRYPT</div>
         </div>
         <div class="columns" v-if="existingTokenBalances.length">
           <div class="column info-title">{{ $t('address.token_balances') }}</div>
           <div class="column info-value">
             <div v-for="token in existingTokenBalances" class="monospace">
-              {{ token.balance | qrc20(token.decimals) }}
+              {{ token.balance | rrc20(token.decimals) }}
               <AddressLink :address="token.address">
                 {{ token.symbol || $t('contract.token.tokens') }}
               </AddressLink>
@@ -79,7 +79,7 @@
           </nuxt-link>
         </li>
         <li
-          v-if="type === 'qrc20'"
+          v-if="type === 'rrc20'"
           :class="{'is-active': $route.matched.some(route => route.name === 'contract-id-rich-list')}">
           <nuxt-link :to="{name: 'contract-id-rich-list', params: {id}}">
             {{ $t('misc.rich_list_title') }}
@@ -87,13 +87,13 @@
         </li>
       </ul>
     </div>
-    <nuxt-child :qrc20="qrc20" />
+    <nuxt-child :rrc20="rrc20" />
   </section>
 </template>
 
 <script>
   import Contract from '@/models/contract'
-  import {RequestError} from '@/services/qtuminfo-api'
+  import {RequestError} from '@/services/recryptinfo-api'
 
   export default {
     head() {
@@ -106,7 +106,7 @@
         txid: '',
         owner: '',
         type: '',
-        qrc20: null,
+        rrc20: null,
         balance: '0',
         totalReceived: '0',
         totalSent: '0',
@@ -121,7 +121,7 @@
           txid: contract.txid,
           owner: contract.owner,
           type: contract.type,
-          qrc20: contract.qrc20,
+          rrc20: contract.rrc20,
           balance: contract.balance,
           totalReceived: contract.totalReceived,
           totalSent: contract.totalSent,

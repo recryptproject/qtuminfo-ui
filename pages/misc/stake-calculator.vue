@@ -3,7 +3,7 @@
     <div class="field">
       <label>{{ $t('misc.stake_calculator.network_weight') }}</label>
       <div class="control">
-        <output class="monospace">{{ netStakeWeight | qtum(8) }}</output>
+        <output class="monospace">{{ netStakeWeight | recrypt(8) }}</output>
       </div>
     </div>
     <div class="field">
@@ -45,7 +45,7 @@
   import {toHexAddress} from '@/utils/address'
   import Address from '@/models/address'
   import Misc from '@/models/misc'
-  import {RequestError} from '@/services/qtuminfo-api'
+  import {RequestError} from '@/services/recryptinfo-api'
 
   export default {
     head() {

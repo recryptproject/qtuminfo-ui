@@ -1,6 +1,6 @@
 <template>
   <div v-show="addresses.length">
-    <button class="button is-qtum" @click="show = !show">
+    <button class="button is-recrypt" @click="show = !show">
       <Icon icon="address-book" regular />
     </button>
     <table v-show="show">
@@ -9,7 +9,7 @@
           <td class="address">
             <AddressLink :address="address" @click="show = false" />
           </td>
-          <td class="monospace has-text-right">{{ balance | qtum(8) }}</td>
+          <td class="monospace has-text-right">{{ balance | recrypt(8) }}</td>
           <td>
             <Icon icon="trash" @click="remove(address)"></Icon>
           </td>
@@ -23,7 +23,7 @@
               {{ $t('my_addresses.summary') }}
             </AddressLink>
           </td>
-          <td class="monospace has-text-right">{{ totalBalance | qtum(8) }}</td>
+          <td class="monospace has-text-right">{{ totalBalance | recrypt(8) }}</td>
           <td></td>
         </tr>
       </tfoot>
